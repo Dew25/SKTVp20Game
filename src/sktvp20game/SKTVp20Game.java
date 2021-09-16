@@ -24,12 +24,21 @@ public class SKTVp20Game {
         int num = random.nextInt(5-0+1)+0;
         System.out.println("Программа загадала число от 0 до 5, отгадай: ");
         Scanner scanner = new Scanner(System.in);
-        int userNum = scanner.nextInt();
-        if(num == userNum){
-            System.out.println("Ура, ты выиграл!");
-        }else{
-            System.out.println("Ты проиграл :(, задумано число: " + num);
-        }
+        int attempt = 0;
+        do{
+            int userNum = scanner.nextInt();
+            if(num == userNum){
+                System.out.println("Ура, ты выиграл!");
+                break;
+            }else{
+                if(attempt<2){
+                    System.out.println("Неправильно, попробуй еще раз: ");
+                }else{
+                    System.out.println("Ты проиграл :(, задумано число: " + num);
+                }
+            }
+            attempt++;
+        }while(attempt < 3);
     }
     
 }
