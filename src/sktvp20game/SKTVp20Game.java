@@ -21,24 +21,36 @@ public class SKTVp20Game {
      */
     public static void main(String[] args) {
         Random random = new Random();
-        int num = random.nextInt(5-0+1)+0;
-        System.out.println("Программа загадала число от 0 до 5, отгадай: ");
         Scanner scanner = new Scanner(System.in);
-        int attempt = 0;
+        String repeat = "";
         do{
-            int userNum = scanner.nextInt();
-            if(num == userNum){
-                System.out.println("Ура, ты выиграл!");
-                break;
-            }else{
-                if(attempt<2){
-                    System.out.println("Неправильно, попробуй еще раз: ");
+            int num = random.nextInt(5-0+1)+0;
+            System.out.println("Программа загадала число от 0 до 5, отгадай: ");
+            int attempt = 0; 
+            int userNum;
+            do{
+                userNum = scanner.nextInt();
+                if(num == userNum){
+                    System.out.println("Ура, ты выиграл!");
+                    break;
                 }else{
-                    System.out.println("Ты проиграл :(, задумано число: " + num);
+                    if(attempt<2){
+                        System.out.println("Неправильно, попробуй еще раз: ");
+                    }else{
+                        System.out.println("Ты проиграл :(, задумано число: " + num);
+                    }
                 }
+                attempt++;
+            }while(attempt < 3);
+            System.out.println("------------------------------------");
+            System.out.printf("Чтобы закончить нажмите \"n\",%n для продолжения нажмите%n любую другую клавишу: ");
+            scanner.nextLine();
+            repeat=scanner.nextLine();
+            if(repeat.equals("n")){
+                break;
             }
-            attempt++;
-        }while(attempt < 3);
+            System.out.println("");
+        }while(true);    
     }
     
 }
